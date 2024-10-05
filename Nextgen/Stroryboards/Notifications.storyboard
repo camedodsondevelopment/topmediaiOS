@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5QX-6a-JLT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Titillium-Semibold.otf">
+            <string>Titillium-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hKx-vy-viV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="5QX-6a-JLT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="ic_notification" selectedImage="NotificationSelection" id="rqW-Ai-qJm">
+                        <color key="badgeColor" name="tabbarSelected"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UUh-Lb-6aL">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cjc-o0-rh3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-675" y="65"/>
+        </scene>
+        <!--NotificationsVC-->
+        <scene sceneID="6VG-BM-UgU">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iac-lb-0qt" customClass="NotificationsVC" customModule="TopMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c5d-6N-U0E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uss-82-9Q3">
+                                <rect key="frame" x="55" y="72" width="132" height="24"/>
+                                <fontDescription key="fontDescription" name="Titillium-Semibold" family="Titillium" pointSize="24"/>
+                                <color key="textColor" name="lblColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Notifications"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogk-7I-XcO">
+                                <rect key="frame" x="338" y="70" width="56" height="28"/>
+                                <fontDescription key="fontDescription" name="Titillium-Semibold" family="Titillium" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Clear All">
+                                    <color key="titleColor" name="lblColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Clear All"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnClearClicks:" destination="Iac-lb-0qt" eventType="touchUpInside" id="css-o7-DvC"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9jC-Eh-cq9">
+                                <rect key="frame" x="0.0" y="106" width="414" height="756"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-Ar-Ddg">
+                                <rect key="frame" x="10" y="66.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XBg-Ar-Ddg" secondAttribute="height" id="F7X-so-VKd"/>
+                                    <constraint firstAttribute="height" constant="35" id="IV2-So-nb9"/>
+                                    <constraint firstAttribute="width" secondItem="XBg-Ar-Ddg" secondAttribute="height" id="oqf-5H-zb2"/>
+                                </constraints>
+                                <color key="tintColor" name="tabbarSelected"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="arrow.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="btnBackClicks:" destination="Iac-lb-0qt" eventType="touchUpInside" id="kR8-Bf-alm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="udz-fL-hu1"/>
+                        <color key="backgroundColor" name="bgColor"/>
+                        <constraints>
+                            <constraint firstItem="uss-82-9Q3" firstAttribute="leading" secondItem="XBg-Ar-Ddg" secondAttribute="trailing" constant="10" id="58l-HY-ynJ"/>
+                            <constraint firstItem="udz-fL-hu1" firstAttribute="trailing" secondItem="Ogk-7I-XcO" secondAttribute="trailing" constant="20" id="Efm-ez-e89"/>
+                            <constraint firstItem="Ogk-7I-XcO" firstAttribute="centerY" secondItem="uss-82-9Q3" secondAttribute="centerY" id="KFo-Aa-jAG"/>
+                            <constraint firstItem="XBg-Ar-Ddg" firstAttribute="centerY" secondItem="uss-82-9Q3" secondAttribute="centerY" id="Mtb-mo-Yuy"/>
+                            <constraint firstItem="udz-fL-hu1" firstAttribute="bottom" secondItem="9jC-Eh-cq9" secondAttribute="bottom" id="NwL-H6-f3j"/>
+                            <constraint firstItem="9jC-Eh-cq9" firstAttribute="top" secondItem="uss-82-9Q3" secondAttribute="bottom" constant="10" id="bgH-FC-Lq8"/>
+                            <constraint firstItem="uss-82-9Q3" firstAttribute="top" secondItem="udz-fL-hu1" secondAttribute="top" constant="24" id="hkL-Fc-d4X"/>
+                            <constraint firstItem="9jC-Eh-cq9" firstAttribute="leading" secondItem="udz-fL-hu1" secondAttribute="leading" id="pdT-dN-r3v"/>
+                            <constraint firstItem="udz-fL-hu1" firstAttribute="trailing" secondItem="9jC-Eh-cq9" secondAttribute="trailing" id="uQF-rP-8Qg"/>
+                            <constraint firstItem="XBg-Ar-Ddg" firstAttribute="leading" secondItem="udz-fL-hu1" secondAttribute="leading" constant="10" id="y8e-sx-j5z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="e6S-xF-YFu"/>
+                    <connections>
+                        <outlet property="btnClearAll" destination="Ogk-7I-XcO" id="TEu-yk-02f"/>
+                        <outlet property="tblNotifiations" destination="9jC-Eh-cq9" id="JCP-MC-bv1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tqv-Ff-zZX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="65" y="65"/>
+        </scene>
+        <!--Profile ViewerVC-->
+        <scene sceneID="8sx-o3-5Ju">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewerVC" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F8e-B9-yzi" customClass="ProfileViewerVC" customModule="TopMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Ai-YV-tDe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Viewers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbW-P5-iUP">
+                                <rect key="frame" x="55" y="68" width="156" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DkE-Z3-jdj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Titillium-Semibold" family="Titillium" pointSize="24"/>
+                                <color key="textColor" name="lblColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="Profile Viewers"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PbV-mf-AiW">
+                                <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbB-7g-5cq">
+                                <rect key="frame" x="10" y="64" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nbB-7g-5cq" secondAttribute="height" id="BuK-D7-HhT"/>
+                                    <constraint firstAttribute="height" constant="35" id="OIg-Qs-doq"/>
+                                </constraints>
+                                <color key="tintColor" name="tabbarSelected"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="arrow.backward" catalog="system"/>
+                                <connections>
+                                    <action selector="btnBackClicks:" destination="F8e-B9-yzi" eventType="touchUpInside" id="W8C-Yu-itS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="J3v-JD-Jaa"/>
+                        <color key="backgroundColor" name="bgColor"/>
+                        <constraints>
+                            <constraint firstItem="PbV-mf-AiW" firstAttribute="leading" secondItem="J3v-JD-Jaa" secondAttribute="leading" id="1Wq-C4-yhK"/>
+                            <constraint firstItem="nbB-7g-5cq" firstAttribute="bottom" secondItem="tbW-P5-iUP" secondAttribute="bottom" constant="1" id="5G0-k5-yrA"/>
+                            <constraint firstItem="J3v-JD-Jaa" firstAttribute="trailing" secondItem="PbV-mf-AiW" secondAttribute="trailing" id="7m2-Mz-2fr"/>
+                            <constraint firstItem="PbV-mf-AiW" firstAttribute="top" secondItem="tbW-P5-iUP" secondAttribute="bottom" constant="10" id="BAu-67-Nyq"/>
+                            <constraint firstItem="J3v-JD-Jaa" firstAttribute="bottom" secondItem="PbV-mf-AiW" secondAttribute="bottom" id="T2z-da-2NX"/>
+                            <constraint firstItem="nbB-7g-5cq" firstAttribute="leading" secondItem="J3v-JD-Jaa" secondAttribute="leading" constant="10" id="YVS-Wc-i4p"/>
+                            <constraint firstItem="tbW-P5-iUP" firstAttribute="leading" secondItem="nbB-7g-5cq" secondAttribute="trailing" constant="10" id="d6r-cu-mXl"/>
+                            <constraint firstItem="tbW-P5-iUP" firstAttribute="top" secondItem="J3v-JD-Jaa" secondAttribute="top" constant="20" id="gUI-A0-bnw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PhD-FA-ksd"/>
+                    <connections>
+                        <outlet property="tblUsers" destination="PbV-mf-AiW" id="ZZz-bp-AyR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nNW-7O-Z56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="74"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NotificationSelection" width="27" height="44"/>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
+        <image name="ic_notification" width="35" height="46"/>
+        <namedColor name="bgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lblColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tabbarSelected">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,6 @@
+framework module Pods_Nextgen {
+  umbrella header "Pods-Nextgen-umbrella.h"
+
+  export *
+  module * { export * }
+}
