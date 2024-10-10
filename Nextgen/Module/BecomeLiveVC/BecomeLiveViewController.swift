@@ -2,7 +2,7 @@
 //  BecomeLiveViewController.swift
 //  Nextgen
 //
-//  Created by Muhammad Rizwan on 05/09/2024.
+//  Created by Muhammad Farhan Akram on 05/10/2024.
 //
 
 import UIKit
@@ -15,6 +15,8 @@ var broadcasterName = ""
 var bcasterProfileImage = ""
 var isABroadcaster: Bool = false
 var broadcasters:[UInt] = [UInt(NextgenUser.shared.id) ?? 0]
+
+
 
 class BecomeLiveViewController: UIViewController {
     
@@ -62,11 +64,18 @@ class BecomeLiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("::::Check::\(UInt(NextgenUser.shared.id) ?? 0)")
         initView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+       
         if joinerType == "audience" {
+            startPreview()
+            
             setupAudience()
         }else{
             startPreview()
@@ -78,6 +87,7 @@ class BecomeLiveViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        broadcasters.removeLast()
         if joinerType == "audience" {
             updateAudienceCount(by: -1)
         }else{
@@ -162,6 +172,9 @@ class BecomeLiveViewController: UIViewController {
         AgoraRtcEngineKit.destroy()
         
         dismissVC()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.closeAndDismiss()
     }
     
     
@@ -257,7 +270,7 @@ class BecomeLiveViewController: UIViewController {
     
     func startPreview() {
         let videoCanvas = AgoraRtcVideoCanvas()
-        
+        print("::::::Preview::::::\(broadcasters.count)")
         if broadcasters.count == 1 {
             videoCanvas.view = videoViewForB1
             videoViewForB2.isHidden = true
@@ -313,7 +326,7 @@ class BecomeLiveViewController: UIViewController {
     
     func setupAudience() {
         agoraKit.setChannelProfile(.liveBroadcasting)
-        agoraKit.setClientRole(.audience)
+        agoraKit.setClientRole(.broadcaster)
         let token = agoraSDKToken
         let channelName = channelName
         let uid: UInt = UInt(NextgenUser.shared.id) ?? 0
@@ -334,7 +347,7 @@ class BecomeLiveViewController: UIViewController {
             
         ]
         
-        ServiceManager.shared.postRequest(ApiURL: .notifyToAllFollowers, parameters: parameter, Success: { (response, Success, message, statusCode) in
+        ServiceManager.shared.postRequest(ApiURL: .notifyToAllFollowers, parameters: parameter,isShowErrorAlerts: false, Success: { (response, Success, message, statusCode) in
             
             let responseDcit = response.dictionaryValue
             
@@ -386,11 +399,15 @@ extension BecomeLiveViewController: AgoraRtcEngineDelegate {
     func rtcEngine(_ engine: AgoraRtcEngineKit, didOccurError errorCode: AgoraErrorCode) {
         print("Error occurred: \(errorCode.rawValue) - \(errorCode)")
     }
-    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didClientRoleChanged oldRole: AgoraClientRole, newRole: AgoraClientRole, newRoleOptions: AgoraClientRoleOptions?) {
+        print("Broadcaster with UID \(oldRole) joined the channel.")
+    }
     func rtcEngine(_ engine: AgoraRtcEngineKit, didJoinChannel channel: String, withUid uid: UInt, elapsed: Int) {
         print("User \(uid) joined channel \(channel) in \(elapsed)ms")
     }
-    
+    func rtcEngine(_ engine: AgoraRtcEngineKit, didVideoPublishStateChange channelId: String, sourceType: AgoraVideoSourceType, oldState: AgoraStreamPublishState, newState: AgoraStreamPublishState, elapseSinceLastState: Int32) {
+        print("Broadcaster with UID \(channelId) joined the channel.")
+    }
     func rtcEngine(_ engine: AgoraRtcEngineKit, didLeaveChannelWith stats: AgoraChannelStats) {
         print("Left channel with stats: \(stats)")
     }
@@ -409,6 +426,16 @@ extension BecomeLiveViewController: AgoraRtcEngineDelegate {
         broadcasters.append(uid)
         setupRemoteVideoStream(uid: uid)
     }
+    func rtcEngine(_ engine: AgoraRtcEngineKit, firstRemoteVideoDecodedOfUid uid: UInt, size: CGSize, elapsed: Int){
+        print("Broadcaster with UID \(uid) firstRemoteAudioFrameDecodedOfUid the channel.")
+    }
+    func rtcEngine(_ engine: AgoraRtcEngineKit, remoteVideoStateChangedOfUid uid: UInt, state: AgoraVideoRemoteState, reason: AgoraVideoRemoteReason, elapsed: Int) {
+        print("Broadcaster with UID \(uid) remoteVideoStateChangedOfUid the channel.")
+    }
+    func rtcEngine(_ engine: AgoraRtcEngineKit, remoteUserStateChangedOfUid uid: UInt, state: UInt) {
+        print("Broadcaster with UID \(uid) remoteVideoStateChangedOfUid the channel.")
+    }
+
 }
 
 extension BecomeLiveViewController{
